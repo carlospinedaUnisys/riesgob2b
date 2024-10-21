@@ -25,7 +25,7 @@ const AppTopbar = forwardRef<AppTopbarRef>((props, ref) => {
             </button>
 
             <Link href="/" className="layout-topbar-logo justify-content-center">
-                <img src={`/layout/images/Logo_ITCO_blanco.png`} alt="logo" />
+                <img src={`/layout/images/Logo_ISA_blanco.png`} alt="logo" />
             </Link>
             <Link href="/" className="layout-topbar-logo justify-content-end">
                 <span>RIESGOS B2B</span>

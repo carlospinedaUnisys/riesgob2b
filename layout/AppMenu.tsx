@@ -16,15 +16,19 @@ const AppMenu = () => {
             items: [{ label: 'Inicio', icon: 'pi pi-fw pi-home', to: '/' }]
         },
         {
+            label: 'Información Finaciera',
+            items: [{ label: 'Captura de Información Financiera' , icon: 'pi pi-address-book', to: '/financiera/captura'}]
+        },
+        {
             label: 'Administrador',
             items: [
                 { label: 'Tablas maestras', icon: 'pi pi-fw pi-table', to: '/admin/maestros' },
                 { label: 'Ponderaciones', icon: 'pi pi-fw pi-chart-bar', to: '/admin/ponderacion' },
-                { label: 'Garantias', icon: 'pi pi-fw pi-verified', to: '/admin/ponderacion' },
-                { label: 'Indicadores', icon: 'pi pi-fw pi-chart-line', to: '/admin/ponderacion' },
-                { label: 'Calificaciones', icon: 'pi pi-fw pi-trophy', to: '/admin/ponderacion' },
-                { label: 'Tipo de cambio', icon: 'pi pi-fw pi-money-bill', to: '/admin/ponderacion' },
-                { label: 'Fuentes externas', icon: 'pi pi-fw pi-external-link', to: '/admin/ponderacion' }
+                { label: 'Garantias', icon: 'pi pi-fw pi-verified', to: '/admin/garantias' },
+                { label: 'Indicadores', icon: 'pi pi-fw pi-chart-line', to: '/admin/indicadores' },
+                { label: 'Calificaciones', icon: 'pi pi-fw pi-trophy', to: '/admin/calificaciones' },
+                { label: 'Tipo de cambio', icon: 'pi pi-fw pi-money-bill', to: '/admin/tipoCambio' },
+                { label: 'Fuentes externas', icon: 'pi pi-fw pi-external-link', to: '/admin/fuentesExternas' }
             ]
         },
         {

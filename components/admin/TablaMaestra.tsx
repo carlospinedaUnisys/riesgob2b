@@ -227,7 +227,7 @@ export const TablaMaestra = () => {
                 <div className="flex">
                     <div className="flex-1 h-4rem p-4">
                         <FloatLabel>
-                            <InputText id="version" value={newRow?.alfa1} className="p-inputtext-full"/>
+                            <InputText id="version" tooltip="Campo Alfanumérico para las siglas de la moneda Ejm: USD" tooltipOptions={{ position: 'top' }} value={newRow?.alfa1} className="p-inputtext-full"/>
                             <label htmlFor="version">Valor 1</label>
                         </FloatLabel>
                     </div>

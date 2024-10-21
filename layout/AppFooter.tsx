@@ -8,7 +8,7 @@ const AppFooter = () => {
 
     return (
         <div className="layout-footer">
-            <img src={`/layout/images/Logo_ITCO.png`} alt="Logo" height="50" className="mr-2" />
+            <img src={`/layout/images/Logo_ISA.png`} alt="Logo" height="50" className="mr-2" />
             by
             <span className="font-medium ml-2">Unisys de Colombia</span>
         </div>
