@@ -17,15 +17,19 @@ import { InputNumber } from 'primereact/inputnumber';
 import { Toast } from 'primereact/toast';
 import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
 import { MultiStateCheckbox, MultiStateCheckboxChangeEvent } from 'primereact/multistatecheckbox';
+import MasterApi from '@/services/MasterApi';
+import useSWR from 'swr'    
 
-export const TablaMaestra = () => {
-    const [selectedCategoria, setSelectedCategoria] = useState<Listas | null>(null);
+export const MasterTable = () => {
+    const [selectedCategory, setSelectedCategory] = useState<Listas | null>(null);
     const [visible, setVisible] = useState(false);
     const [titleRow, setTitleRow] = useState<string | undefined>("");
     const [edit, setEdit] = useState<boolean>(false);
     const [newRow, setNewRow] = useState<ListaMaestra>();
     const toast = useRef<Toast>(null);
-    const [elementos, setElementos] = useState<ListaMaestra[]>([
+    const [pruebaElementos, setPruebaElementos] = useState();
+    const [elementosAPI , setElementosAPI] = useState();
+    const [elements, setElements] = useState<ListaMaestra[]>([
         {
             id: 'MNED0001',
             name: 'Pesos Colombianos',
@@ -67,7 +71,7 @@ export const TablaMaestra = () => {
             bool2: undefined
         }
     ]);
-    const listCategorias: Listas[] = [
+    const listCategories: Listas[] = [
         { name: 'Grupos de datos para indicadores', id: 1},
         { name: 'Monedas', id: 2},
         { name: 'Variables para indicadores', id: 3},
@@ -89,6 +93,10 @@ export const TablaMaestra = () => {
         { value: 'Verdadero', icon: 'pi pi-check-circle' },
         { value: 'Falso', icon: 'pi pi-times-circle' }
     ];
+
+    useEffect(() => {
+        MasterApi.getAll().then(data => setPruebaElementos(data.results));
+    }, []);
 
 
     const onColumnToggle = (event: MultiSelectChangeEvent) => {
@@ -194,13 +202,13 @@ export const TablaMaestra = () => {
             <div className='card'>
                 <div className="formgrid grid p-1">
                     <FloatLabel className="w-full">
-                        <Dropdown showClear inputId="listPond" value={selectedCategoria} onChange={(e: DropdownChangeEvent) => setSelectedCategoria(e.value)} options={listCategorias} optionLabel="name" className="w-full" />
+                        <Dropdown showClear inputId="listPond" value={selectedCategory} onChange={(e: DropdownChangeEvent) => setSelectedCategory(e.value)} options={listCategories} optionLabel="name" className="w-full" />
                         <label htmlFor="listPond">Seleccione una categoria</label>
                     </FloatLabel>
                 </div>
             </div>
             <div className='card'>
-                <DataTable value={elementos} header={header} tableStyle={{ minWidth: '50rem' }}>
+                <DataTable value={elements} header={header} tableStyle={{ minWidth: '50rem' }}>
                     <Column field="id" header="Id" />
                     <Column field="name" header="Nombre" />
                     {visibleColumns.map((col) => (
@@ -213,8 +221,8 @@ export const TablaMaestra = () => {
                 <div className="grid flex">
                     <div className="flex-1 h-4rem w-full p-4">
                         <FloatLabel>
-                            <Dropdown showClear inputId="listPond" value={selectedCategoria} onChange={(e: DropdownChangeEvent) => setSelectedCategoria(e.value)} options={listCategorias} optionLabel="name" className="w-full" />
-                            <label htmlFor="listPond">Seleccione una categoria</label>
+                            <Dropdown showClear inputId="listCat" value={selectedCategory} options={listCategories} disabled optionLabel="name" className="w-full" />
+                            <label htmlFor="listCat">Categoria</label>
                         </FloatLabel>
                     </div>
                     <div className="flex-1 h-4rem w-full p-4">
